@@ -5,6 +5,6 @@
    ```
     or others
 3. install s3cmd add config .s3cfg
-4. go build -o ./s3example ./main.go
+4. `go build -o ./s3example ./main.go`
 5. 
 6. `bash retry.sh`
