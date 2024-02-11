@@ -1,5 +1,7 @@
 #!/bin/bash
 
+s3cmd mb s3://test-bucketname
+
 for i in {1..10000}; do
         ./s3example
         # config s3cmd
