@@ -19,8 +19,8 @@ import (
 func main() {
 
 	svc := s3.New(session.Must(session.NewSession(&aws.Config{
-		Credentials:      credentials.NewStaticCredentials("accessky", "secrekey", ""),
-		Endpoint:         aws.String("http://endpoint:80"),
+		Credentials:      credentials.NewStaticCredentials("b2345678901234567890", "b234567890123456789012345678901234567890", ""),
+		Endpoint:         aws.String("http://127.0.0.1:8000"),
 		Region:           aws.String("us-east-1"),
 		S3ForcePathStyle: aws.Bool(true),
 	})))
