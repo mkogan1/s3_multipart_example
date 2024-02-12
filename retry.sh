@@ -3,6 +3,7 @@
 s3cmd mb s3://test-bucketname
 
 for i in {1..10000}; do
+        echo "vvv i=$i"
         ./s3example
         # config s3cmd
         s3cmd get s3://test-bucketname/test-key /tmp/ --force && s3cmd rm s3://test-bucketname/test-key
@@ -11,4 +12,5 @@ for i in {1..10000}; do
                 echo "failed"
                 exit 0
         fi
+        echo "^^^ i=$i"
 done
