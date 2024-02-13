@@ -7,3 +7,4 @@
 3. install s3cmd add config .s3cfg
 4. `go build -o ./s3example ./main.go`
 5. `bash retry.sh`
+   (in case multiple instances should be run in parallel add a objectname suffix arg, ex: `bash retry.sh $$`)

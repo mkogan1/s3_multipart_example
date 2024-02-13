@@ -24,7 +24,12 @@ func main() {
 		Region:           aws.String("us-east-1"),
 		S3ForcePathStyle: aws.Bool(true),
 	})))
-	err := RetryUpload(svc, "test-bucketname", "test-key")
+
+	objectNameSuffix := ""
+	if len(os.Args) > 1 {
+		objectNameSuffix = os.Args[1]
+	}
+	err := RetryUpload(svc, "test-bucketname", "test-key"+objectNameSuffix)
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
