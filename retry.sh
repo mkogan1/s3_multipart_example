@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# go build -o ./s3example ./main.go
+
 dd if=/dev/urandom of=/tmp/test1.txt bs=1M count=20
 dd if=/dev/urandom of=/tmp/test2.txt bs=1M count=30
 s3cmd mb s3://test-bucketname
