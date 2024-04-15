@@ -20,21 +20,27 @@ func main() {
 
 	svc := s3.New(session.Must(session.NewSession(&aws.Config{
 		Credentials:      credentials.NewStaticCredentials("b2345678901234567890", "b234567890123456789012345678901234567890", ""),
-		//Endpoint:         aws.String("http://127.0.0.1:8000"),
-		Endpoint:         aws.String("http://127.0.0.1:8100"),
+		Endpoint:         aws.String("http://127.0.0.1:8000"),
+		//Endpoint:         aws.String("http://127.0.0.1:8100"),
 		Region:           aws.String("us-east-1"),
 		S3ForcePathStyle: aws.Bool(true),
 	})))
 
 	objectNameSuffix := ""
+	if len(os.Args) > 2 {
+		objectNameSuffix = os.Args[2]
+	}
+	//err := RetryUpload(svc, b01b-000000000000", "test-key"+objectNameSuffix)
+	var bucketName string
 	if len(os.Args) > 1 {
-		objectNameSuffix = os.Args[1]
+		bucketName = os.Args[1]
+	} else {
+		bucketName = "test-bucketname"
 	}
-	err := RetryUpload(svc, "test-bucketname", "test-key"+objectNameSuffix)
+	err := RetryUpload(svc, bucketName, "test-key"+objectNameSuffix)
 	if err != nil {
-		fmt.Printf(err.Error())
+		fmt.Println(err.Error())
 	}
-	return
 }
 
 func RetryUpload(svc *s3.S3, bucket, key string) error {
